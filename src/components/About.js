@@ -1,7 +1,6 @@
 import React from "react";
 
-export const About = () => {
-  
+export const About = () => {  
   return (
     <div id="about" className="bg-black">
       <div className="flex flex-wrap items-center justify-center h-full py-12 lg:py-24">
