@@ -20,7 +20,7 @@ export const TopNavbar = () => {
   useLayoutEffect(() => {
     let from = gsap.from(linkRef.current, {
       opacity: 0,
-      duration: 2,
+      duration: 3,
       immediateRender: false
     });
 
@@ -70,7 +70,7 @@ export const TopNavbar = () => {
                       />
                     </a>
                   </div>
-                  <div ref={linkRef} className="hidden text-sm uppercase md:flex md:items-center md:ml-0 md:space-x-2 text-white">
+                  <div ref={linkRef} className="hidden text-sm uppercase md:flex md:items-center md:ml-0 md:space-x-2">
                     <a href="#about" className={styles.linkNav}>
                       <div className="relative group">
                         <span>About</span>

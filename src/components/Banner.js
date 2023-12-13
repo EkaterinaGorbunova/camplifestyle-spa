@@ -1,25 +1,37 @@
 import React, { useEffect, useRef } from "react";
 import gsap from 'gsap';
+
 const banner = "/banner.jpg";
 
 export const Banner = () => {
   const leftAnimation = useRef();
   const rightAnimation = useRef();
+  const upAnimation = useRef();
+  const zoomAnimation = useRef();
 
   useEffect(() => {
-    gsap.fromTo(leftAnimation.current, { x: -150 }, { x: 0, duration: 3 });
-    gsap.fromTo(rightAnimation.current, { x: 150 }, { x: 0, duration: 3 });
+    let animations = [
+      gsap.fromTo(leftAnimation.current, { x: -150 }, { x: 0, duration: 3 }),
+      gsap.fromTo(rightAnimation.current, { x: 150 }, { x: 0, duration: 3 }),
+      gsap.fromTo(upAnimation.current, { y: 100 }, { y: 0, duration: 2}),
+      gsap.fromTo(zoomAnimation.current, { scale: 1.1 }, { scale: 1, duration: 2, ease: 'power2.out' }),
+    ];
+
+      // Cleanup animations on component unmount
+      return () => {
+        animations.forEach(animation => animation.kill());
+      };
   }, []);
 
   return (
     <>
-      <div className="relative w-full h-full bg-black">
-        <img
+      <div ref={zoomAnimation} className="relative w-full h-full bg-black">
+        <img 
           className="relative object-cover object-center w-screen h-screen bg-black"
           src={banner}
           alt="banner"
         />
-        <div className="absolute inset-0 z-20 flex items-center justify-center w-full h-screen bg-gray-900 bg-opacity-50"></div>
+        <div className="absolute inset-0 z-20 flex items-center justify-center w-full h-screen bg-gray-900 bg-opacity-30"></div>
       </div>
       <div
         data-aos="flip-down"
@@ -33,7 +45,7 @@ export const Banner = () => {
             <p ref={rightAnimation} className="text-red-500 mb-4 ">
               and Stress Less
             </p>            
-            <p className="font-sans text-sm italic font-normal text-gray-300 lg:text-4xl lg:text-center">
+            <p ref={upAnimation} className="font-sans text-sm italic font-normal text-gray-300 lg:text-4xl lg:text-center">
               Camping LifeStyle
             </p>
           </div>

@@ -3,6 +3,7 @@ import './App.css';
 // https://colinhacks.com/essays/building-a-spa-with-nextjs
 
 import React from 'react';
+import { AnimatedComponent } from '../src/components/AnimatedComponent'
 import { TopNavbar } from '../src/components/TopNavbar';
 import { Banner } from '../src/components/Banner'
 import { About } from '../src/components/About';
@@ -16,13 +17,23 @@ export default function App() {
   return (
     <>
       <TopNavbar />
-      <Banner />
-      <About />
-      <Relax />
-      <DeStress />
-      <Roadmap />
-      <Team />
-      <Footer />      
+        <Banner />
+      <AnimatedComponent>
+        <About />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <Relax />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <DeStress />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <Roadmap />
+      </AnimatedComponent>
+      <AnimatedComponent>
+        <Team />
+      </AnimatedComponent>
+      <Footer />
     </>
   );
-}
+};
