@@ -1,6 +1,7 @@
-import React from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Menu } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import gsap from 'gsap';
 
 const logo = "/home.svg";
 
@@ -14,6 +15,26 @@ const styles = {
 };
 
 export const TopNavbar = () => {
+  const linkRef = useRef(null);
+
+  useLayoutEffect(() => {
+    let from = gsap.from(linkRef.current, {
+      opacity: 0,
+      duration: 2,
+      immediateRender: false
+    });
+
+    let to = gsap.to(linkRef.current, {
+      opacity: 1,
+      delay: 2,
+    });
+
+    return () => {
+      from.kill();
+      to.kill();
+    };
+  });
+
   return (
     <>
       <Menu
@@ -49,7 +70,7 @@ export const TopNavbar = () => {
                       />
                     </a>
                   </div>
-                  <div className="hidden text-sm uppercase md:flex md:items-center md:ml-0 md:space-x-2">
+                  <div ref={linkRef} className="hidden text-sm uppercase md:flex md:items-center md:ml-0 md:space-x-2 text-white">
                     <a href="#about" className={styles.linkNav}>
                       <div className="relative group">
                         <span>About</span>
