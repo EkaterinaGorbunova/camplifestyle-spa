@@ -113,7 +113,7 @@ export const TopNavbar = () => {
                             className="inline-flex items-center px-12 py-2 text-sm font-normal text-white uppercase bg-green-600 border border-transparent rounded-md hover:bg-green-700"
                           >
                             <span className="sr-only">JOIN</span>
-                            Join
+                            Join us
                           </a>
                         </div>
                       </>
@@ -188,7 +188,7 @@ export const TopNavbar = () => {
                         className="px-2 py-1 text-sm font-normal text-white uppercase bg-green-600 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-none"
                       >
                         <span className="sr-only">MINT</span>
-                        Join
+                        Join us
                       </a>
                     </div>
                   </Menu.Item>
